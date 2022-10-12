@@ -7,13 +7,15 @@ const SignUp = async (req,res)=>{
     const password = res.locals.password;
     
     try {
-        const query = connection.query(`
-            
-        `,[name,email,password]);
+        const query = await connection.query('SELECT * FROM "users";');
+        console.log(query);
         
+        //INSERT INTO users (name, email, password) VALUES ("$1","$2","$3");,[name,email,password]);
+        res.sendStatus(201);
 
     } catch (error) {
-        res.send(error);
+        console.log(error)
+        res.sendStatus(error);
     };
 };
 
