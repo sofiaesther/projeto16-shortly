@@ -38,7 +38,7 @@ CREATE TABLE "visitorsCount" (
 );
 
 CREATE TABLE "sessions" (
-	"id" integer PRIMARY KEY,
+	"id" serial PRIMARY KEY,
 	"userId" integer REFERENCES "users"("id") NOT NULL,
 	"token" varchar(255) NOT NULL UNIQUE
 );
