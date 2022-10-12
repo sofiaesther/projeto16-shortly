@@ -3,10 +3,8 @@ import './setup.js';
 
 const { Pool } = pg;
 
-    const connection = await new Pool({
+    const connection = new Pool({
         connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
-        }
     });
+
 export default connection;

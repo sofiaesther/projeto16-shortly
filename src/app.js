@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import './setup.js';
+import connection from './db.js';
 
 import userRouter from './routers/userRouter.js'
 
