@@ -146,7 +146,7 @@ const ranking = async(req,res)=>{
             GROUP BY r."userId"
             ) o ON u.id = o."userId"
         
-        ORDER BY s."visitorsCount"
+        ORDER BY s."visitorsCount" DESC NULLS LAST
         LIMIT 10
         ;
         `);

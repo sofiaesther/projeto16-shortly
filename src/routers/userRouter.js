@@ -9,8 +9,8 @@ const router = express.Router();
 router.post('/signup', onlyUser,validSignUp,Cripto,SignUp);
 router.post('/signin',signInValidate,existUser,AuthPassword,SignIn);
 
-router.get('/users/me', auth, userUrls )
+router.get('/users/me', auth, userUrls );
 
-router.get('/ranking',ranking)
+router.get('/ranking',ranking);
 
 export default router;

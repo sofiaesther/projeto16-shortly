@@ -3,11 +3,12 @@ import connection from '../db.js';
 import jwt from 'jsonwebtoken';
 
 const signInSchema = joi.object({
-  email: joi.string().max(100).required().email(),
+  email: joi.string().max(100).email().required(),
   password: joi.string().max(80).required()
 });
 
 const signInValidate = (req,res,next)=>{
+
     const validation = signInSchema.validate(req.body);
     if(validation.error){
         const erros = [];

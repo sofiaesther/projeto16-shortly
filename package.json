@@ -2,7 +2,6 @@
   "name": "projeto16-shortly",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/app.js",
@@ -21,5 +20,15 @@
     "nanoid": "^4.0.0",
     "pg": "^8.8.0",
     "uuid": "^9.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sofiaesther/projeto16-shortly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sofiaesther/projeto16-shortly/issues"
+  },
+  "homepage": "https://github.com/sofiaesther/projeto16-shortly#readme",
+  "description": ""
 }

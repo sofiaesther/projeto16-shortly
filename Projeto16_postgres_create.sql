@@ -43,5 +43,6 @@ CREATE TABLE "sessions" (
 	"id" serial PRIMARY KEY,
 	"userId" integer REFERENCES "users"("id") NOT NULL,
 	"token" varchar(255) NOT NULL UNIQUE,
+	"isValid" boolean NOT NULL DEFAULT TRUE,
 	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );

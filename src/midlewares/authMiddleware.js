@@ -47,14 +47,18 @@ const auth = async (req,res,next) => {
     };
 
     const token = authorization.replace('Bearer ','');
-
+    let userId;
 
     try {
         const verification = jwt.verify(token,process.env.TOKEN_SECRET);
-        if (!verification){
-            return res.sendStatus(401);
-        };
-        const userId = verification.id;
+        userId = verification.id;
+        
+    } catch (error) {
+        return res.status(401).send('Invalid Token')
+    }
+
+    try {
+        
         const hasToken = await connection.query(`
         SELECT
         "isValid"
