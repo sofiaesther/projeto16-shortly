@@ -61,4 +61,26 @@ const goToUrl = async (req,res) =>{
     };
 };
 
-export{newShorten, getUrl, goToUrl};
+const deleteUrl = async( req,res) =>{
+    const urlId = req.params.id;
+
+    try {
+        const deleteRequest = await connection.query(`
+        DELETE FROM
+        requests
+        WHERE
+        "urlId" = $1;`,[urlId]);
+        
+        const deleteUrl = await connection.query(`
+        DELETE FROM
+        urls
+        WHERE
+        id = $1;`,[urlId]);
+        res.sendStatus(204);
+
+    } catch (error) {
+        return res.sendStatus(error);
+    };
+};
+
+export{newShorten, getUrl, goToUrl, deleteUrl};

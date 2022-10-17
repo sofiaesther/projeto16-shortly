@@ -12,6 +12,7 @@ const Cripto = (req,res,next)=>{
     next();
 };
 
+
 const AuthPassword = async (req,res,next)=>{
     const password = req.body.password;
     const userId = res.locals.userId;
@@ -39,14 +40,17 @@ const AuthPassword = async (req,res,next)=>{
 }
 
 const auth = async (req,res,next) => {
-    const {authorization} = req.headers;
+    const authorization = req.headers.authorization;
 
-    if(!authorization){
+    if(!authorization|| authorization.slice(0,7) !== 'Bearer '){
+        console.log('1')
         return res.sendStatus(401);
     };
 
     const token = authorization.replace('Bearer ','');
+
     const userId = (jwt.verify(token,process.env.TOKEN_SECRET)).id;
+
 
     try {
         const hasToken = await connection.query(`

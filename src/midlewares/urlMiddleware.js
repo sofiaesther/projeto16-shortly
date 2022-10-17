@@ -73,5 +73,31 @@ const hasShort = async (req,res,next) =>{
     };
 };
 
+const isUsersUrl = async (req,res,next) =>{
+    const userId = res.locals.userId;
+    const urlId = req.params.id;
 
-export{validateNewUrl,hasUrl, hasShort};
+    try {
+        const urlDetails = await connection.query(`
+        SELECT
+        *
+        FROM
+        requests
+        WHERE
+        "urlId" = $1 AND "userId" = $2
+        LIMIT
+        1;`, [urlId,userId]);
+
+        if (urlDetails.rows.length ===0){
+
+            return res.sendStatus(401);
+        };
+        next();
+
+
+    } catch (error) {
+        return res.sendStatus(error);
+    };
+} ;
+
+export{validateNewUrl,hasUrl, hasShort, isUsersUrl};
