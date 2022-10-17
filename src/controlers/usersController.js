@@ -72,4 +72,88 @@ const SignIn = async (req,res)=>{
     };
 };
 
-export{SignUp, SignIn};
+const userUrls = async (req,res)=>{
+    const userId = res.locals.userId;
+
+    try {
+        const userInfo = (await connection.query(`
+        SELECT 
+            u.id, u.name, SUM(s.visitors) AS "visitCount"
+        FROM
+            users u
+        JOIN
+            (   SELECT 
+                    r."userId", COUNT(v.id) AS "visitors" 
+                FROM 
+                    requests r
+                JOIN 
+                    "visitorsCount" v ON r."urlId" = v."urlId"
+                GROUP BY 
+                    r."userId") s ON u.id = s."userId"
+        WHERE
+            u.id = $1
+        GROUP BY
+            u.id
+        LIMIT
+        1
+        ;`,[userId])).rows[0];
+
+        const userUrls = await connection.query(`
+        SELECT
+            r."urlId" AS id, l."shortUrl", l.url, COUNT(v.id) AS "visitors" 
+        FROM
+            requests r  
+        JOIN
+            urls l ON r."urlId"= l.id
+        JOIN
+            "visitorsCount" v ON r.id = v."urlId"
+        WHERE
+            r."userId" = $1
+        GROUP BY
+            r."urlId",l."shortUrl", l.url
+        ;`,[userId]);
+
+        
+        userInfo.shortenedUrls= userUrls.rows;
+
+        res.status(200).send(userInfo)
+        
+    } catch (error) {
+        res.sendStatus(error);
+    };
+}; 
+
+const ranking = async(req,res)=>{
+    try {
+        const rank = await connection.query(`
+        SELECT 
+            u.id, u.name, s."visitorsCount", o."linksCount"
+        FROM
+            users u
+        LEFT JOIN ( 
+            SELECT 
+                r."userId", COUNT(v.id) AS "visitorsCount"
+            FROM 
+                requests r
+            JOIN 
+                "visitorsCount" v ON r."urlId" = v."urlId"
+            GROUP BY 
+                r."userId"
+            ) s ON u.id = s."userId"
+        LEFT JOIN ( 
+            SELECT r."userId", COUNT(r."urlId") AS "linksCount"
+            from requests r
+            GROUP BY r."userId"
+            ) o ON u.id = o."userId"
+        
+        ORDER BY s."visitorsCount"
+        LIMIT 10
+        ;
+        `);
+        res.status(200).send(rank.rows);
+    } catch (error) {
+        res.sendStatus(error);
+    };
+}; 
+
+export{SignUp, SignIn, userUrls, ranking};

@@ -43,16 +43,18 @@ const auth = async (req,res,next) => {
     const authorization = req.headers.authorization;
 
     if(!authorization|| authorization.slice(0,7) !== 'Bearer '){
-        console.log('1')
         return res.sendStatus(401);
     };
 
     const token = authorization.replace('Bearer ','');
 
-    const userId = (jwt.verify(token,process.env.TOKEN_SECRET)).id;
-
 
     try {
+        const verification = jwt.verify(token,process.env.TOKEN_SECRET);
+        if (!verification){
+            return res.sendStatus(401);
+        };
+        const userId = verification.id;
         const hasToken = await connection.query(`
         SELECT
         "isValid"
