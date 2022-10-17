@@ -9,11 +9,12 @@ const signUpSchema = joi.object({
 });
 
 const validSignUp = (req,res,next)=>{
-    const validation = signUpSchema.validate(req.body);
+    const validation = signUpSchema.validate(req.body, {abortEarly:false});
 
     if(validation.error){
-        console.log(validation);
-        return res.sendStatus(422).send(validation);
+        const erros = [];
+        validation.error.details.map((e)=> erros.push(e.message));
+        return res.status(422).send(erros);
     }
 
     next();
@@ -33,7 +34,7 @@ const onlyUser = async (req,res,next) =>{
         `, [email]);
 
         if(user.rows.length >0){
-            return res.sendStatus(409);
+           return res.sendStatus(409);
         }
         next();
         

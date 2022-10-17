@@ -8,10 +8,11 @@ CREATE TABLE "users" (
 
 
 
-CREATE TABLE "url" (
+CREATE TABLE "urls" (
 	"id" SERIAL PRIMARY KEY,
 	"shortUrl" varchar(20) NOT NULL UNIQUE,
-	"url" varchar(1000) NOT NULL UNIQUE
+	"url" varchar(1000) NOT NULL,
+	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 
@@ -19,7 +20,7 @@ CREATE TABLE "url" (
 CREATE TABLE "requests" (
 	"id" serial PRIMARY KEY,
 	"userId" integer REFERENCES "users"("id") NOT NULL,
-	"urlId" integer REFERENCES "url"("id") NOT NULL UNIQUE,
+	"urlId" integer REFERENCES "urls"("id") NOT NULL UNIQUE,
 	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
@@ -27,18 +28,20 @@ CREATE TABLE "requests" (
 
 CREATE TABLE "visitors" (
 	"id" serial PRIMARY KEY,
-	"urlId" integer REFERENCES "url"("id") NOT NULL UNIQUE,
-	"userId" integer REFERENCES "users"("id") NOT NULL
+	"urlId" integer REFERENCES "urls"("id") NOT NULL UNIQUE,
+	"userId" integer REFERENCES "users"("id") NOT NULL,
+	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 CREATE TABLE "visitorsCount" (
 	"id" serial PRIMARY KEY,
-	"urlId" integer REFERENCES "url"("id") NOT NULL,
+	"urlId" integer REFERENCES "urls"("id") NOT NULL,
 	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 CREATE TABLE "sessions" (
 	"id" serial PRIMARY KEY,
 	"userId" integer REFERENCES "users"("id") NOT NULL,
-	"token" varchar(255) NOT NULL UNIQUE
+	"token" varchar(255) NOT NULL UNIQUE,
+	"createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
 );

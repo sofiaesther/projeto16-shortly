@@ -1,5 +1,6 @@
 import connection from "../db.js";
 import {v4 as uuid} from 'uuid';
+import jwt from 'jsonwebtoken';
 
 const SignUp = async (req,res)=>{
 
@@ -22,22 +23,51 @@ const SignUp = async (req,res)=>{
 const SignIn = async (req,res)=>{
     const email= res.locals.email;
     const userId = res.locals.userId;
-
-    console.log(email,userId)
     
     try {
-        const token = uuid();
+        let token;
 
-        const query = await connection.query(`
-        INSERT INTO
-        sessions("userId","token")
-        VALUES
-        ($1,$2)
-        `,[userId,token]);
+        const hasToken = await connection.query(`
+        SELECT
+            token, "isValid"
+        FROM
+            sessions
+        WHERE
+            "userId" = $1 ;
+        `, [userId]);
+        
+        if(hasToken.rows.length ===0){
+            token = jwt.sign({
+                id: userId
+            }, process.env.TOKEN_SECRET);
 
-        res.sendStatus(200).send({token: token});
+            const query = await connection.query(`
+            INSERT INTO
+            sessions("userId","token")
+            VALUES
+            ($1,$2)
+            ;`,[userId,token]);
+    
+        } else{
+            token = hasToken.rows[0].token;
+
+            if(!hasToken.isValid){
+                const updateValidation = await connection.query(`
+                UPDATE 
+                    sessions
+                SET 
+                "isValid"=true
+                WHERE
+                "userId" = $1 AND token =$2
+                ;`,[userId,token]);
+            };
+
+        };
+
+        res.status(200).send({token: token});
         
     } catch (error) {
+        
         res.sendStatus(error);
     };
 };

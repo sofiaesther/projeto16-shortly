@@ -1,6 +1,6 @@
 import { SignUp, SignIn } from "../controlers/usersController.js";
 import { validSignUp, onlyUser } from "../midlewares/signUpMiddleware.js";
-import { Cripto, AuthPassword } from "../midlewares/criptoMiddleware.js";
+import { Cripto, AuthPassword } from "../midlewares/authMiddleware.js";
 import { signInValidate, existUser } from "../midlewares/signInMiddlewars.js";
 import express from 'express';
 
