@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: requests; Type: TABLE; Schema: public; Owner: sofiasinoti
+-- Name: requests; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.requests (
@@ -32,10 +32,8 @@ CREATE TABLE public.requests (
 );
 
 
-ALTER TABLE public.requests OWNER TO sofiasinoti;
-
 --
--- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: sofiasinoti
+-- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.requests_id_seq
@@ -47,17 +45,15 @@ CREATE SEQUENCE public.requests_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.requests_id_seq OWNER TO sofiasinoti;
-
 --
--- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sofiasinoti
+-- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.requests_id_seq OWNED BY public.requests.id;
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.sessions (
@@ -69,10 +65,8 @@ CREATE TABLE public.sessions (
 );
 
 
-ALTER TABLE public.sessions OWNER TO postgres;
-
 --
--- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.sessions_id_seq
@@ -84,17 +78,15 @@ CREATE SEQUENCE public.sessions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.sessions_id_seq OWNER TO postgres;
-
 --
--- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
 
 
 --
--- Name: urls; Type: TABLE; Schema: public; Owner: sofiasinoti
+-- Name: urls; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.urls (
@@ -105,10 +97,8 @@ CREATE TABLE public.urls (
 );
 
 
-ALTER TABLE public.urls OWNER TO sofiasinoti;
-
 --
--- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: sofiasinoti
+-- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.urls_id_seq
@@ -120,17 +110,15 @@ CREATE SEQUENCE public.urls_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.urls_id_seq OWNER TO sofiasinoti;
-
 --
--- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sofiasinoti
+-- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.urls_id_seq OWNED BY public.urls.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: sofiasinoti
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.users (
@@ -142,10 +130,8 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO sofiasinoti;
-
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: sofiasinoti
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -157,17 +143,15 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO sofiasinoti;
-
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sofiasinoti
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: visitors; Type: TABLE; Schema: public; Owner: sofiasinoti
+-- Name: visitors; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.visitors (
@@ -178,10 +162,8 @@ CREATE TABLE public.visitors (
 );
 
 
-ALTER TABLE public.visitors OWNER TO sofiasinoti;
-
 --
--- Name: visitorsCount; Type: TABLE; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public."visitorsCount" (
@@ -191,10 +173,8 @@ CREATE TABLE public."visitorsCount" (
 );
 
 
-ALTER TABLE public."visitorsCount" OWNER TO sofiasinoti;
-
 --
--- Name: visitorsCount_id_seq; Type: SEQUENCE; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public."visitorsCount_id_seq"
@@ -206,17 +186,15 @@ CREATE SEQUENCE public."visitorsCount_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."visitorsCount_id_seq" OWNER TO sofiasinoti;
-
 --
--- Name: visitorsCount_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public."visitorsCount_id_seq" OWNED BY public."visitorsCount".id;
 
 
 --
--- Name: visitors_id_seq; Type: SEQUENCE; Schema: public; Owner: sofiasinoti
+-- Name: visitors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.visitors_id_seq
@@ -228,59 +206,57 @@ CREATE SEQUENCE public.visitors_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.visitors_id_seq OWNER TO sofiasinoti;
-
 --
--- Name: visitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sofiasinoti
+-- Name: visitors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.visitors_id_seq OWNED BY public.visitors.id;
 
 
 --
--- Name: requests id; Type: DEFAULT; Schema: public; Owner: sofiasinoti
+-- Name: requests id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.requests ALTER COLUMN id SET DEFAULT nextval('public.requests_id_seq'::regclass);
 
 
 --
--- Name: sessions id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: sessions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
 
 
 --
--- Name: urls id; Type: DEFAULT; Schema: public; Owner: sofiasinoti
+-- Name: urls id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.urls ALTER COLUMN id SET DEFAULT nextval('public.urls_id_seq'::regclass);
 
 
 --
--- Name: users id; Type: DEFAULT; Schema: public; Owner: sofiasinoti
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: visitors id; Type: DEFAULT; Schema: public; Owner: sofiasinoti
+-- Name: visitors id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.visitors ALTER COLUMN id SET DEFAULT nextval('public.visitors_id_seq'::regclass);
 
 
 --
--- Name: visitorsCount id; Type: DEFAULT; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."visitorsCount" ALTER COLUMN id SET DEFAULT nextval('public."visitorsCount_id_seq"'::regclass);
 
 
 --
--- Data for Name: requests; Type: TABLE DATA; Schema: public; Owner: sofiasinoti
+-- Data for Name: requests; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.requests (id, "userId", "urlId", "createdAt") FROM stdin;
@@ -302,7 +278,7 @@ COPY public.requests (id, "userId", "urlId", "createdAt") FROM stdin;
 
 
 --
--- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.sessions (id, "userId", token, "isValid", "createdAt") FROM stdin;
@@ -314,7 +290,7 @@ COPY public.sessions (id, "userId", token, "isValid", "createdAt") FROM stdin;
 
 
 --
--- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: sofiasinoti
+-- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.urls (id, "shortUrl", url, "createdAt") FROM stdin;
@@ -336,7 +312,7 @@ COPY public.urls (id, "shortUrl", url, "createdAt") FROM stdin;
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: sofiasinoti
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.users (id, name, email, password, "createdAt") FROM stdin;
@@ -355,7 +331,7 @@ COPY public.users (id, name, email, password, "createdAt") FROM stdin;
 
 
 --
--- Data for Name: visitors; Type: TABLE DATA; Schema: public; Owner: sofiasinoti
+-- Data for Name: visitors; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.visitors (id, "urlId", "userId", "createdAt") FROM stdin;
@@ -363,7 +339,7 @@ COPY public.visitors (id, "urlId", "userId", "createdAt") FROM stdin;
 
 
 --
--- Data for Name: visitorsCount; Type: TABLE DATA; Schema: public; Owner: sofiasinoti
+-- Data for Name: visitorsCount; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public."visitorsCount" (id, "urlId", "createdAt") FROM stdin;
@@ -393,49 +369,49 @@ COPY public."visitorsCount" (id, "urlId", "createdAt") FROM stdin;
 
 
 --
--- Name: requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sofiasinoti
+-- Name: requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.requests_id_seq', 14, true);
 
 
 --
--- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 
 
 --
--- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sofiasinoti
+-- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.urls_id_seq', 14, true);
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sofiasinoti
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.users_id_seq', 11, true);
 
 
 --
--- Name: visitorsCount_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public."visitorsCount_id_seq"', 22, true);
 
 
 --
--- Name: visitors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sofiasinoti
+-- Name: visitors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.visitors_id_seq', 1, false);
 
 
 --
--- Name: requests requests_pkey; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: requests requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.requests
@@ -443,7 +419,7 @@ ALTER TABLE ONLY public.requests
 
 
 --
--- Name: requests requests_urlId_key; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: requests requests_urlId_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.requests
@@ -451,7 +427,7 @@ ALTER TABLE ONLY public.requests
 
 
 --
--- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sessions
@@ -459,7 +435,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- Name: sessions sessions_token_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: sessions sessions_token_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sessions
@@ -467,7 +443,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- Name: urls urls_pkey; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: urls urls_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.urls
@@ -475,7 +451,7 @@ ALTER TABLE ONLY public.urls
 
 
 --
--- Name: urls urls_shortUrl_key; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: urls urls_shortUrl_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.urls
@@ -483,7 +459,7 @@ ALTER TABLE ONLY public.urls
 
 
 --
--- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -491,7 +467,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -499,7 +475,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: visitorsCount visitorsCount_pkey; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount visitorsCount_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."visitorsCount"
@@ -507,7 +483,7 @@ ALTER TABLE ONLY public."visitorsCount"
 
 
 --
--- Name: visitors visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitors visitors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.visitors
@@ -515,7 +491,7 @@ ALTER TABLE ONLY public.visitors
 
 
 --
--- Name: visitors visitors_urlId_key; Type: CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitors visitors_urlId_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.visitors
@@ -523,7 +499,7 @@ ALTER TABLE ONLY public.visitors
 
 
 --
--- Name: requests requests_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: requests requests_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.requests
@@ -531,7 +507,7 @@ ALTER TABLE ONLY public.requests
 
 
 --
--- Name: requests requests_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: requests requests_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.requests
@@ -539,7 +515,7 @@ ALTER TABLE ONLY public.requests
 
 
 --
--- Name: sessions sessions_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: sessions sessions_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sessions
@@ -547,7 +523,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- Name: visitorsCount visitorsCount_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitorsCount visitorsCount_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public."visitorsCount"
@@ -555,7 +531,7 @@ ALTER TABLE ONLY public."visitorsCount"
 
 
 --
--- Name: visitors visitors_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitors visitors_urlId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.visitors
@@ -563,7 +539,7 @@ ALTER TABLE ONLY public.visitors
 
 
 --
--- Name: visitors visitors_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sofiasinoti
+-- Name: visitors visitors_userId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.visitors
